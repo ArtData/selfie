@@ -31,6 +31,9 @@
         width:95vw;
         height:80vh;
         margin:0 auto 20px auto;
+        background-size: contain;
+        background-position:center center;
+        background-repeat: no-repeat;
       }
 
       .photo {
@@ -120,6 +123,7 @@
     }
 
     generateImages(flickrResponse);
+    $('.sfmoma-photo')[0].css({'background-image':flickrResponse.sfmoma_image_url});
     start();
 
     </script>
