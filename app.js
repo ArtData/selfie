@@ -50,6 +50,10 @@ router.get('/:id', function (req, res, next) {
 			var lastName = artist.split(' ').pop();
 			var text = data.display_title + ' ' + lastName + ' ' + 'sfmoma';
 
+      if (artworkId == 143230) {
+        data.image.image_url = '/2012.154_01_A02.jpg';
+      }
+
 			if (!data.image.image_url) {
 				next(new Error('SFMOMA Image not found.'));
 				return;
