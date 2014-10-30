@@ -19,8 +19,13 @@
         color:#17649A;
       }
 
-      h1 {
+      h1, h2 {
         text-align:center;
+        font-size:150%;
+      }
+
+      h2 {
+        font-size:200%;
       }
 
       div {
@@ -29,7 +34,7 @@
 
       .photo-container {
         width:95vw;
-        height:80vh;
+        height:70vh;
         margin:0 auto 20px auto;
       }
 
@@ -37,9 +42,7 @@
         width:49%;
         height:100%;
         display:inline-block;
-        border:solid 1px black;
-        border-color:#17649A;
-        background-color:#EEEEEE;
+        border:solid 1px transparent;
         position:relative;
         background-size: contain;
         background-position:center center;
@@ -63,7 +66,8 @@
 
   <body class="photoreactions" ontouchstart="">
 
-    <h1>Photo Reactions</h1>
+    <h1>Photo Reactions to</h1>
+    <h2></h2>
 
     <div class="photo-container">
       <div class="photo sfmoma-photo">
@@ -75,10 +79,10 @@
     </div>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
+    <script type="text/javascript" src="/jquery.preload.min.js"></script>
 
     <script>
-      var animation, activePhotos, currentIndex;
+      var animation, activePhotos, currentIndex, preloadCount = 0;
 
       var flickrResponse = {{{ output }}};
 
@@ -94,9 +98,22 @@
       activePhotos = flickrResponse.photos;
     }
 
+    function preload(src) {
+      var image = new Image();
+      image.src = src;
+      image.onload = function(){
+
+        preloadCount++;
+        if (preloadCount >= activePhotos.length) {
+          start();
+        }
+      };
+    }
+
     function start() {
       if (!animation) {
         currentIndex = 0;
+
         animation = setInterval(function() {
           last = currentIndex;
 
@@ -123,9 +140,13 @@
     }
 
     generateImages(flickrResponse);
-    //console.log(, flickrResponse.sfmoma_image_url);
     $('.sfmoma-photo').css({'background-image':'url(\''+flickrResponse.sfmoma_image_url+'\')'});
-    start();
+
+    $('h2').text('"' + flickrResponse.title + '" by ' + flickrResponse.artist);
+
+    activePhotos.forEach(function(src) {
+      preload(src);
+    });
 
     </script>
 
