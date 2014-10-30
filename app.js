@@ -54,6 +54,8 @@ router.get('/:id', function (req, res, next) {
 				data.image.image_url = '/2012.154_01_A02.jpg';
 			}
 
+			data.image.image_url = '/2012.154_01_A02.jpg';
+
 			if (!data.image.image_url) {
 				next(new Error('SFMOMA Image not found.'));
 				return;
