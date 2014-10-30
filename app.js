@@ -81,7 +81,9 @@ router.get('/:id', function (req, res, next) {
 
 				}
 
-				res.send(output);
+        res.render('art', {output: JSON.stringify(output)});
+
+				// res.send(output);
 
 			});
 
