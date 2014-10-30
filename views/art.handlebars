@@ -31,9 +31,6 @@
         width:95vw;
         height:80vh;
         margin:0 auto 20px auto;
-        background-size: contain;
-        background-position:center center;
-        background-repeat: no-repeat;
       }
 
       .photo {
@@ -44,6 +41,9 @@
         border-color:#17649A;
         background-color:#EEEEEE;
         position:relative;
+        background-size: contain;
+        background-position:center center;
+        background-repeat: no-repeat;
       }
 
       .flickr-photo {
@@ -123,7 +123,8 @@
     }
 
     generateImages(flickrResponse);
-    $('.sfmoma-photo')[0].css({'background-image':flickrResponse.sfmoma_image_url});
+    //console.log(, flickrResponse.sfmoma_image_url);
+    $('.sfmoma-photo').css({'background-image':'url(\''+flickrResponse.sfmoma_image_url+'\')'});
     start();
 
     </script>
