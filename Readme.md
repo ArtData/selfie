@@ -6,6 +6,13 @@ Created for the SFMoMA Art+Data day. This application will show an image from an
 To Install
 ----------
  `npm install`
+ 
+Configure
+---------
+
+Copy config/default.json to config/local.json.
+
+Apply for a [Flickr API key](https://www.flickr.com/services/apps/create/apply/) and put it in the config file. Also put the HTTP Basic Auth credentials for the SFMOMA API in the config file.
 
 Start the app
 -------------
