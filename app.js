@@ -104,7 +104,7 @@ app.use('/artworks', router);
 
 app.use(function(err, req, res, next) {
 
-	res.send('Failed.');
+	res.send('Failed.' + err.message);
 
 });
 
