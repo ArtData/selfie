@@ -1,3 +1,11 @@
 {
-	
+	"flickr": {
+		"api_key": "xxx"
+	},
+
+	"sfmoma": {
+		"username": "xxx",
+		"password": "xxx"
+	}
+
 }
